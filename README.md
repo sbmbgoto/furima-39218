@@ -5,66 +5,62 @@
 | Column             | Type      | Options                        |
 | ------------------ | --------- | ------------------------------ |
 | email              | string    | null: false, unique: true      |
-| ncrypted_password  | string    | null: false                    |
-| name               | string    | null: false                    |
-| name_kana          | string    | null: false                    |
+| encrypted_password | string    | null: false                    |
+| last_name          | string    | null: false                    |
+| first_name         | string    | null: false                    |
+| last_name_kana     | string    | null: false                    |
+| first_name_kana    | string    | null: false                    |
 | nick_name          | string    | null: false                    |
-| birthday           | integer   | null: false                    |
-| oder               | reference | null: false, foreign_key: true |
-| item               | reference | null: false, foreign_key: true |
-| shipping           | reference | null: false, foreign_key: true |
+| birthday           | date      | null: false                    |
 
 ### Association
 has_many :items
 has_many :oders
-has_many :shippings
 
 
 
 ## itemsテーブル
-| Column                 | Type      | Options                        |
-| ---------------------- | --------- | ------------------------------ |
-| name                   | string    | null: false                    |
-| image                  | string    | null: false                    |
-| Category               | string    | null: false                    |
-| condition              | string    | null: false                    |
-| shipping_burden        | string    | null: false                    |
-| place_of_shipment      | string    | null: false                    |
-| introduction           | text      | null: false                    |
-| expected_shipping_date | integer   | null: false                    |
-| user                   | reference | null: false, foreign_key: true |
+| Column                    | Type       | Options                        |
+| ------------------------- | ---------- | ------------------------------ |
+| name                      | string     | null: false                    |
+| category_id               | integer    | null: false                    |
+| condition_id              | integer    | null: false                    |
+| shipping_burden_id        | integer    | null: false                    |
+| prefectures_id            | integer    | null: false                    |
+| introduction              | text       | null: false                    |
+| expected_shipping_date_id | integer    | null: false                    |
+| price                     | integer    | null: false                    |
+| user                      | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
-belongs_to :oder
+has_one :order
 
 
 
-## odersテーブル
-| Column    | Type      | Options                        |
-| --------- | --------- | ------------------------------ |
-| user      | reference | null: false, foreign_key: true |
-| items     | reference | null: false, foreign_key: true |
-| shippings | reference | null: false, foreign_key: true |
+## ordersテーブル
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
 has_one :shipping
-has_one :item
+belongs_to :item
 
 
 
 ## shippingsテーブル
-| Column       | Type      | Options                        |
-| ------------ | --------- | ------------------------------ |
-| prefectures  | string    | null: false                    |
-| city         | string    | null: false                    |
-| addresses    | string    | null: false                    |
-| building     | string    |                                |
-| phone number | integer   | null: false                    |
-| post code    | integer   | null: false                    |
-| user         | reference | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| prefectures_id | string     | null: false                    |
+| city           | string     | null: false                    |
+| addresses      | string     | null: false                    |
+| building       | string     |                                |
+| phone_number   | string     | null: false                    |
+| post_code      | string     | null: false                    |
+| oder           | references | null: false, foreign_key: true |
 
 ### Association
-belongs_to :user
-belongs_to :oder
+belongs_to :order
