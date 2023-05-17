@@ -54,7 +54,7 @@ belongs_to :item
 ## shippingsテーブル
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| prefecture_id | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | addresses     | string     | null: false                    |
 | building      | string     |                                |
