@@ -26,7 +26,7 @@ has_many :oders
 | category_id               | integer    | null: false                    |
 | condition_id              | integer    | null: false                    |
 | shipping_burden_id        | integer    | null: false                    |
-| prefectures_id            | integer    | null: false                    |
+| prefecture_id             | integer    | null: false                    |
 | introduction              | text       | null: false                    |
 | expected_shipping_date_id | integer    | null: false                    |
 | price                     | integer    | null: false                    |
@@ -52,15 +52,15 @@ belongs_to :item
 
 
 ## shippingsテーブル
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| prefectures_id | string     | null: false                    |
-| city           | string     | null: false                    |
-| addresses      | string     | null: false                    |
-| building       | string     |                                |
-| phone_number   | string     | null: false                    |
-| post_code      | string     | null: false                    |
-| oder           | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| prefecture_id | string     | null: false                    |
+| city          | string     | null: false                    |
+| addresses     | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| post_code     | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :order
