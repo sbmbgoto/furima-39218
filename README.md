@@ -15,7 +15,7 @@
 
 ### Association
 has_many :items
-has_many :oders
+has_many :orders
 
 
 
