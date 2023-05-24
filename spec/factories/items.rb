@@ -8,6 +8,11 @@ FactoryBot.define do
     introduction              {Faker::Lorem.sentence}
     expected_shipping_date_id {Faker::Number.between(from: 2, to: 4)}
     price                     {Faker::Number.between(from: 300, to: 9999999)}
-    image                     {Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/furima-footer.png'), 'image/png')}
+
+    association :user
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('spec/fixtures/furima-footer.png'), filename: 'furima-footer.png')
+    end
   end
 end
