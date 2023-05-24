@@ -59,7 +59,11 @@ gem 'factory_bot_rails'
 gem 'faker'
 gem 'pry-rails'
 gem 'gimei'
+gem 'active_hash'
 
 group :production do
   gem 'pg'
 end
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
