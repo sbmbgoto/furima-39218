@@ -13,4 +13,8 @@ class User < ApplicationRecord
   validates :password,        format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze, message: 'は半角英数を両方含む必要があります'}
 
   has_many :items
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
