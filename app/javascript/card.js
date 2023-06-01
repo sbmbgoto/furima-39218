@@ -13,7 +13,6 @@ const pay = () => {
 
   submit.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log("フォーム送信時にイベント発火")
     payjp.createToken(numberElement).then(function (response) {
       if (response.error) {
       } else {

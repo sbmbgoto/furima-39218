@@ -24,9 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
     if Order.find_by(item_id: @item.id)
       redirect_to root_path
     end
