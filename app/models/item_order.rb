@@ -2,7 +2,7 @@ class ItemOrder
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :token, :prefecture_id, :city, :addresses, :building, :phone_number, :post_code, :order_id
   with_options presence: true do
-    validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
+    validates :prefecture_id, numericality: { other_than: 1 , message: "を選択してください"}
     validates :city
     validates :addresses
     validates :phone_number,  length: { minimum: 10, maximum: 11 }, numericality: { only_integer: true, message: "は10～11桁の半角数字で入力してください" }
